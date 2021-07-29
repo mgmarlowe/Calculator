@@ -2,7 +2,7 @@ body, html {
     margin: 0;
     height: 100%;
     width: 100%;
-    background-color: black;
+    background-color: #6D545D;
     color: lightgray;
     font-size: 50px;
     font-family: 'VT323', monospace;
@@ -16,7 +16,7 @@ body, html {
     grid-template-rows: repeat(6, 1fr);
     padding: 10px;
     gap: .07em;
-    background-color: darkorange;
+    background-color: #ffb30fff;
     margin: auto;
 }
 
@@ -29,9 +29,34 @@ button {
     grid-column: 1 / span 4;
     background-color: rgb(248, 203, 121);
     margin-bottom: .07em;
+    color: darkorchid;
+    text-align: right;
 }
 
 #num0 {
     grid-column: 1 / span 2;
 }
 
+.nums {
+    background-color: #7189FF;
+}
+
+.nums:active {
+    background-color: #4562f5;
+}
+
+.operand {
+    background-color: #97B1A6;
+}
+
+.operand:focus {
+    background-color: #6bb395;
+}
+
+.utility {
+    background-color: #E2B4BD;
+}
+
+.utility:active {
+    background-color: #e792a0;
+}
