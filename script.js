@@ -13,6 +13,9 @@ document.getElementById("C").addEventListener("click", function() {
         .toString()
         .slice(0, -1);
     
+        if(displayValue === "") {
+            displayValue = 0;
+        }
     updateDisplay();
 
 })
