@@ -1,10 +1,21 @@
+let displayValue = 0;
+let firstOperand = null;
+let secondOperand = null;
+let operator = null;
+
 const nums = document.querySelectorAll(".nums");
 nums.forEach((num) => num.addEventListener('click', getNum));
 
-let displayValue = 0;
+const ops = document.querySelectorAll(".operand");
+ops.forEach((op) => op.addEventListener("click", evalOperand));
 
-document.getElementById("AC").addEventListener("click", function () {
+document.getElementById("opEqu").addEventListener("click", equals);
+
+document.getElementById("AC").addEventListener("click", function() {
     displayValue = 0;
+    firstOperand = null;
+    secondOperand = null;
+    operator = null;
     updateDisplay();
 })
 
@@ -19,6 +30,26 @@ document.getElementById("C").addEventListener("click", function() {
     updateDisplay();
 
 })
+
+function evalOperand(e) {
+    firstOperand = displayValue;
+
+    if(e.target.id === "opEqu") {
+        equals();
+    }
+    else{
+        operator = e.target.value;
+    }
+}
+
+function equals() {
+    console.log("Equals");
+    displayValue = 0;
+    firstOperand = null;
+    secondOperand = null;
+    operator = null;
+    updateDisplay();
+}
 
 function getNum(e) {
     let num = e.target.value;
@@ -51,7 +82,7 @@ function multiply (a, b) {
 }
 
 function divide (a, b) {
-    if(a===0 || b === 0){
+    if(b === 0){
         return "Nice try, but no thanks!"
     }
     return a / b;

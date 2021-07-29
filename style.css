@@ -53,6 +53,14 @@ button {
     background-color: #6bb395;
 }
 
+.equals {
+    background-color: #97B1A6
+}
+
+.equals:active {
+    background-color: #6bb395;
+}
+
 .utility {
     background-color: #E2B4BD;
 }
