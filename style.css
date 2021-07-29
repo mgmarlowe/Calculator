@@ -1,0 +1,37 @@
+body, html {
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    color: lightgray;
+    font-size: 50px;
+    font-family: 'VT323', monospace;
+}
+
+#container {
+    display: grid;
+    width: 9em;
+    height: 11em;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    padding: 10px;
+    gap: .07em;
+    background-color: darkorange;
+    margin: auto;
+}
+
+button {
+    font-family: inherit;
+    font-size: 1em;
+}
+
+#answer-screen {
+    grid-column: 1 / span 4;
+    background-color: rgb(248, 203, 121);
+    margin-bottom: .07em;
+}
+
+#num0 {
+    grid-column: 1 / span 2;
+}
+
