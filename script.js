@@ -1,13 +1,15 @@
 let displayValue = 0;
 let firstOperand = null;
 let secondOperand = null;
-let operator = null;
+let firstOperator = null;
+let secondOperator = null;
+let final = false; //make function read this. if final=true, clear display on next number button click
 
 const nums = document.querySelectorAll(".nums");
 nums.forEach((num) => num.addEventListener('click', getNum));
 
-const ops = document.querySelectorAll(".operand");
-ops.forEach((op) => op.addEventListener("click", evalOperand));
+const ops = document.querySelectorAll(".operator");
+ops.forEach((op) => op.addEventListener("click", evalOperator));
 
 document.getElementById("opEqu").addEventListener("click", equals);
 
@@ -15,7 +17,9 @@ document.getElementById("AC").addEventListener("click", function() {
     displayValue = 0;
     firstOperand = null;
     secondOperand = null;
-    operator = null;
+    firstOperator = null;
+    secondOperator = null;
+    final = false;
     updateDisplay();
 })
 
@@ -31,34 +35,75 @@ document.getElementById("C").addEventListener("click", function() {
 
 })
 
-function evalOperand(e) {
-    firstOperand = displayValue;
+function evalOperator(e) {
 
-    if(e.target.id === "opEqu") {
-        equals();
+    if(firstOperator === null && firstOperand === null){
+        firstOperator = e.target.value;
+        firstOperand = displayValue;
+        console.log(firstOperand,  firstOperator);
     }
-    else{
-        operator = e.target.value;
+    else if (firstOperator != null && secondOperand === null) {
+        secondOperator = e.target.value;
+        console.log("firstOperator !null");
+        secondOperand = displayValue;
+        displayValue = operate(Number(firstOperand), firstOperator, Number(secondOperand));
+        console.log( firstOperand, secondOperand, firstOperator);
     }
 }
 
 function equals() {
     console.log("Equals");
-    displayValue = 0;
+
+    if(firstOperand === null) {
+        displayValue = displayValue;
+        console.log("first equ");
+    }
+    else if(firstOperand != null && firstOperator === null) {
+        displayValue = displayValue;
+        console.log("op null");
+    }
+/*    else if(firstOperand != null && secondOperator === null) {
+        displayValue = displayValue;
+    } */
+    else {
+        secondOperand = displayValue;
+        displayValue = operate(Number(firstOperand), firstOperator, Number(secondOperand));
+        console.log(displayValue);
+    }
+
+    updateDisplay();
     firstOperand = null;
     secondOperand = null;
-    operator = null;
-    updateDisplay();
+    firstOperator = null;
+    secondOperator = null;
+    final = true;
 }
 
 function getNum(e) {
     let num = e.target.value;
-    if (displayValue === 0 || displayValue === "0") {
-        displayValue = num;
+    if (final === true) {
+        displayValue = 0;
     }
-    else{
-        displayValue += num;
+
+    if(firstOperand === null){
+        if (displayValue === 0 || displayValue === "0") {
+            displayValue = num;
+        }
+        else{
+            displayValue += num;
+        }
     }
+    else if(secondOperand === null){
+        if(displayValue === firstOperand){
+            displayValue = num;
+            console.log(firstOperand);
+        }
+        else{
+            displayValue += num;
+            console.log("second");
+        }
+    }
+    final = false;
     updateDisplay();
 }
 
@@ -69,7 +114,6 @@ function updateDisplay() {
 updateDisplay();
 
 function add (a ,b) {
-    console.log(a);
     return a + b;
 }
 
@@ -88,15 +132,20 @@ function divide (a, b) {
     return a / b;
 }
 
-function operate (a, operator, b) { 
-   switch (operator) {
+function operate (a, firstOperator, b) { 
+    console.log(firstOperator);
+   switch (firstOperator) {
         case "+":
+            console.log("add");
             return add(a, b);
         case "-":
+            console.log("subtract");
             return subtract(a, b);
         case "*":
+            console.log("multiply");
             return multiply(a, b);
         case "/":
+            console.log("divide");
             return divide(a, b);
     }  
 }

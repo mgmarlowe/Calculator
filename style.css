@@ -45,11 +45,11 @@ button {
     background-color: #4562f5;
 }
 
-.operand {
+.operator {
     background-color: #97B1A6;
 }
 
-.operand:focus {
+.operator:focus {
     background-color: #6bb395;
 }
 
