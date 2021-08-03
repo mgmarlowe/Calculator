@@ -4,6 +4,7 @@ let secondOperand = null;
 let firstOperator = null;
 let secondOperator = null;
 let final = false; //make function read this. if final=true, clear display on next number button click
+let result = null;
 
 const nums = document.querySelectorAll(".nums");
 nums.forEach((num) => num.addEventListener('click', getNum));
@@ -20,6 +21,7 @@ document.getElementById("AC").addEventListener("click", function() {
     firstOperator = null;
     secondOperator = null;
     final = false;
+    result = null;
     updateDisplay();
 })
 
@@ -44,10 +46,15 @@ function evalOperator(e) {
     }
     else if (firstOperator != null && secondOperand === null) {
         secondOperator = e.target.value;
-        console.log("firstOperator !null");
         secondOperand = displayValue;
         displayValue = operate(Number(firstOperand), firstOperator, Number(secondOperand));
-        console.log( firstOperand, secondOperand, firstOperator);
+        updateDisplay();
+        result = displayValue;
+        firstOperator = secondOperator;
+        firstOperand = result;
+    }
+    else {
+
     }
 }
 
@@ -65,22 +72,24 @@ function equals() {
 /*    else if(firstOperand != null && secondOperator === null) {
         displayValue = displayValue;
     } */
-    else {
+    else if (result != null) {
         secondOperand = displayValue;
         displayValue = operate(Number(firstOperand), firstOperator, Number(secondOperand));
+        result = displayValue;
         console.log(displayValue);
     }
 
-    updateDisplay();
+/*    updateDisplay();
     firstOperand = null;
     secondOperand = null;
     firstOperator = null;
     secondOperator = null;
-    final = true;
+    result = null;
+    final = true;  */
 }
 
 function getNum(e) {
-    let num = e.target.value;
+    let num = Number(e.target.value);
     if (final === true) {
         displayValue = 0;
     }
@@ -101,6 +110,15 @@ function getNum(e) {
         else{
             displayValue += num;
             console.log("second");
+        }
+    }
+    else if (result !=null) {
+        if (displayValue === result) {
+            displayValue = num;
+            console.log("here");
+        }
+        else{
+            displayValue += num;
         }
     }
     final = false;
