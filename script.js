@@ -76,7 +76,7 @@ function equals() {
         secondOperand = displayValue;
         displayValue = operate(Number(firstOperand), firstOperator, Number(secondOperand));
         result = displayValue;
-        console.log(displayValue);
+        updateDisplay();
     }
 
 /*    updateDisplay();
@@ -89,7 +89,7 @@ function equals() {
 }
 
 function getNum(e) {
-    let num = Number(e.target.value);
+    let num = e.target.value;
     if (final === true) {
         displayValue = 0;
     }
@@ -99,6 +99,7 @@ function getNum(e) {
             displayValue = num;
         }
         else{
+            console.log("Add?")
             displayValue += num;
         }
     }
