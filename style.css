@@ -8,6 +8,10 @@ body, html {
     font-family: 'VT323', monospace;
 }
 
+h1 {
+    text-align: center;
+}
+
 #container {
     display: grid;
     width: 9em;
