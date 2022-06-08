@@ -1,74 +1,79 @@
-body, html {
-    margin: 0;
-    height: 100%;
-    width: 100%;
-    background-color: #6D545D;
-    color: lightgray;
-    font-size: 50px;
-    font-family: 'VT323', monospace;
+body,
+html {
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #eebacd;
+  color: rgb(0, 0, 0);
+  font-size: 50px;
+  font-family: "VT323", monospace;
 }
 
 h1 {
-    text-align: center;
+  text-align: center;
 }
 
 #container {
-    display: grid;
-    width: 9em;
-    height: 11em;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(6, 1fr);
-    padding: 10px;
-    gap: .07em;
-    background-color: #ffb30fff;
-    margin: auto;
+  display: grid;
+  width: 9em;
+  height: 11em;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  padding: 10px;
+  gap: 0.07em;
+  background-color: #ffb30fff;
+  margin: auto;
 }
 
 button {
-    font-family: inherit;
-    font-size: 1em;
+  font-family: inherit;
+  font-size: 1em;
 }
 
 #answer-screen {
-    grid-column: 1 / span 4;
-    background-color: rgb(248, 203, 121);
-    margin-bottom: .07em;
-    color: darkorchid;
-    text-align: right;
+  grid-column: 1 / span 4;
+  background-color: rgb(248, 203, 121);
+  margin-bottom: 0.07em;
+  color: darkorchid;
+  text-align: right;
 }
 
 #num0 {
-    grid-column: 1 / span 2;
+  grid-column: 1 / span 2;
+}
+
+.decimal {
+  background-color: #7189ff;
 }
 
 .nums {
-    background-color: #7189FF;
+  background-color: #7189ff;
 }
 
 .nums:active {
-    background-color: #4562f5;
+  background-color: #4562f5;
 }
 
 .operator {
-    background-color: #97B1A6;
+  background-color: #97b1a6;
 }
 
 .operator:focus {
-    background-color: #6bb395;
+  background-color: #6bb395;
 }
 
 .equals {
-    background-color: #97B1A6
+  background-color: #97b1a6;
 }
 
 .equals:active {
-    background-color: #6bb395;
+  background-color: #6bb395;
 }
 
 .utility {
-    background-color: #E2B4BD;
+  background-color: #e2b4bd;
 }
 
 .utility:active {
-    background-color: #e792a0;
+  background-color: #e792a0;
 }
